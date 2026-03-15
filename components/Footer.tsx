@@ -2,8 +2,6 @@ import Link from 'next/link';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-8 px-4 md:px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -71,7 +69,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-        <p>© {currentYear} Power Pulse Solutions. All rights reserved.</p>
+        <p>© 2026 Power Pulse Solutions. All rights reserved.</p>
         <div className="flex gap-6">
           <Link href="#" className="hover:text-slate-300">Privacy Policy</Link>
           <Link href="#" className="hover:text-slate-300">Terms of Service</Link>

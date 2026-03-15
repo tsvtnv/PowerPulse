@@ -80,7 +80,6 @@ const Home = () => {
               className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
             >
               {[
-                { icon: ShieldCheck, text: 'Fully Insured' },
                 { icon: Clock, text: 'Open 24 Hours' },
                 { icon: CheckCircle2, text: 'Residential & Commercial' },
                 { icon: MapPin, text: 'Local Service' },
@@ -158,7 +157,6 @@ const Home = () => {
               { label: 'Driveway Restoration', before: '/wall-before.jpeg', after: '/wall-after.jpeg' },
               { label: 'Patio Deep Clean', before: '/driveway-after.jpeg', after: '/patio-before.jpeg' },
               { label: 'Front Path Clean', before: '/patio-after.jpeg', after: '/driveway-before.jpeg' },
-              { label: 'Surface Transformation', before: '/surface-before.jpeg', after: '/surface-before.jpeg' },
             ].map((item, idx) => (
               <div key={idx} className="space-y-4">
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden group">
