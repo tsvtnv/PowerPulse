@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="space-y-6">
           <Link href="/" className="flex items-center gap-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo/logo.png" alt="Power Pulse Solutions" className="h-12 w-auto" />
+            <img src="/logo/logo.png" alt="Power Pulse Solutions" className="h-16 w-auto" />
           </Link>
           <p className="text-sm leading-relaxed">
             Professional jet washing and pressure washing services for residential and commercial properties in Sutton Coldfield and surrounding areas.
@@ -31,7 +31,8 @@ const Footer = () => {
             <li><Link href="/services" className="hover:text-white transition-colors">Our Services</Link></li>
             <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
             <li><Link href="/reviews" className="hover:text-white transition-colors">Customer Reviews</Link></li>
-            <li><Link href="/contact" className="hover:text-white transition-colors">Contact & Quote</Link></li>
+            <li><Link href="/quote" className="hover:text-white transition-colors">Get a Quote</Link></li>
+            <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
           </ul>
         </div>
 
@@ -39,10 +40,10 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-bold mb-6 text-lg">Our Services</h3>
           <ul className="space-y-4 text-sm">
-            <li><Link href="/services" className="hover:text-white transition-colors">Driveway Cleaning</Link></li>
-            <li><Link href="/services" className="hover:text-white transition-colors">Patio Cleaning</Link></li>
-            <li><Link href="/services" className="hover:text-white transition-colors">Roof Cleaning</Link></li>
-            <li><Link href="/services" className="hover:text-white transition-colors">Wall Cleaning</Link></li>
+            <li><Link href="/services" className="hover:text-white transition-colors">Jet Washing</Link></li>
+            <li><Link href="/services" className="hover:text-white transition-colors">Window Cleaning</Link></li>
+            <li><Link href="/services" className="hover:text-white transition-colors">Gutter Cleaning</Link></li>
+            <li><Link href="/services" className="hover:text-white transition-colors">Car Cleaning</Link></li>
             <li><Link href="/services" className="hover:text-white transition-colors">Commercial Washing</Link></li>
           </ul>
         </div>

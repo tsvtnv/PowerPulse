@@ -75,9 +75,9 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       {/* Header */}
-      <section className="bg-slate-900 py-20 px-4 md:px-8 text-white">
+      <section className="bg-slate-900 pt-32 pb-20 px-4 md:px-8 text-white">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
           <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto">
@@ -136,10 +136,10 @@ const ServicesPage = () => {
                 )}
                 <div className="pt-4">
                   <Link
-                    href="/contact"
+                    href="tel:07570810766"
                     className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg"
                   >
-                    Request a Quote <ArrowRight size={20} />
+                    Call for a Quote <ArrowRight size={20} />
                   </Link>
                 </div>
               </div>
@@ -163,10 +163,10 @@ const ServicesPage = () => {
               Call 07570 810766
             </Link>
             <Link
-              href="/contact"
+              href="/quote"
               className="bg-white text-blue-600 border-2 border-blue-600 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-blue-50 transition-all"
             >
-              Message Us
+              Get a Quote Online
             </Link>
           </div>
         </div>

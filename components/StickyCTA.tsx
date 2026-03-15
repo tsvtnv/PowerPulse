@@ -14,7 +14,7 @@ const StickyCTA = () => {
         Call Now
       </Link>
       <Link
-        href="/contact"
+        href="/quote"
         className="flex-1 flex items-center justify-center gap-2 py-4 bg-white text-blue-600 font-bold active:bg-slate-50 transition-colors"
       >
         <FileText size={18} />

@@ -9,14 +9,14 @@ const Home = () => {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-24 overflow-hidden">
+      <section className="relative min-h-[100vh] md:min-h-screen flex items-center pt-24 overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/surface-before.jpeg"
+            src="/driveway-after.jpeg"
             alt="Professional Pressure Washing Service"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent" />
         </div>
@@ -65,7 +65,7 @@ const Home = () => {
                 Call 07570 810766
               </Link>
               <Link
-                href="/contact"
+                href="/quote"
                 className="flex items-center justify-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/20 transition-all active:scale-95"
               >
                 Get a Free Quote
@@ -148,7 +148,7 @@ const Home = () => {
                 High-impact results that speak for themselves. We don&apos;t just wash; we restore.
               </p>
             </div>
-            <Link href="/contact" className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all">
+            <Link href="/quote" className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all">
               Get Your Transformation
             </Link>
           </div>
@@ -300,10 +300,10 @@ const Home = () => {
                 Call 07570 810766
               </Link>
               <Link
-                href="/contact"
+                href="/quote"
                 className="bg-blue-700 text-white border border-blue-500 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-blue-800 transition-all active:scale-95"
               >
-                Request Quote
+                Get a Quote Online
               </Link>
             </div>
           </div>

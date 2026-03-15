@@ -7,16 +7,17 @@ import { ShieldCheck, Star, Users, Award, CheckCircle2 } from 'lucide-react';
 
 const AboutPage = () => {
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       {/* Hero */}
-      <section className="bg-slate-900 py-24 px-4 md:px-8 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-20">
+      <section className="bg-slate-900 pt-32 pb-24 px-4 md:px-8 text-white relative overflow-hidden">
+        <div className="absolute inset-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/surface-before.jpeg"
+            src="/driveway-after.jpeg"
             alt="Background"
             className="absolute inset-0 w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70" />
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
           <h1 className="text-4xl md:text-7xl font-bold mb-8">About Power Pulse Solutions</h1>
@@ -112,10 +113,10 @@ const AboutPage = () => {
           </div>
           <div className="flex-1 flex justify-center">
             <Link
-              href="/contact"
+              href="tel:07570810766"
               className="bg-blue-600 text-white px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-blue-700 transition-all shadow-2xl shadow-blue-600/20"
             >
-              Work With Us
+              Call 07570 810766
             </Link>
           </div>
         </div>

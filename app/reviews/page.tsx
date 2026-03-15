@@ -16,9 +16,9 @@ const ReviewsPage = () => {
   ];
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       {/* Header */}
-      <section className="bg-slate-900 py-24 px-4 md:px-8 text-white text-center">
+      <section className="bg-slate-900 pt-32 pb-24 px-4 md:px-8 text-white text-center">
         <div className="max-w-7xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
             <Star size={16} fill="currentColor" />
@@ -109,12 +109,20 @@ const ReviewsPage = () => {
           <p className="text-slate-600 text-lg mb-12">
             Join our growing list of satisfied customers in Sutton Coldfield. Get a free, no-obligation quote today.
           </p>
-          <Link
-            href="/contact"
-            className="bg-blue-600 text-white px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-blue-700 transition-all shadow-2xl shadow-blue-600/20"
-          >
-            Get a Free Quote
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="tel:07570810766"
+              className="bg-blue-600 text-white px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-blue-700 transition-all shadow-2xl shadow-blue-600/20"
+            >
+              Call 07570 810766
+            </Link>
+            <Link
+              href="/quote"
+              className="bg-white text-blue-600 border-2 border-blue-600 px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-blue-50 transition-all"
+            >
+              Get a Quote Online
+            </Link>
+          </div>
         </div>
       </section>
     </div>

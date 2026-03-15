@@ -37,7 +37,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo/logo.png" alt="Power Pulse Solutions" className="h-10 w-auto" />
+          <img src="/logo/logo.png" alt="Power Pulse Solutions" className="h-14 w-auto" />
         </Link>
 
         {/* Desktop Nav */}

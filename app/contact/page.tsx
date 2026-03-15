@@ -1,228 +1,176 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, Loader2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-
-const formSchema = z.object({
-  fullName: z.string().min(2, 'Full name is required'),
-  phone: z.string().min(10, 'Valid phone number is required'),
-  email: z.string().email('Valid email is required'),
-  address: z.string().min(5, 'Address or area is required'),
-  service: z.string().min(1, 'Please select a service'),
-  message: z.string().min(10, 'Please provide a bit more detail about the job'),
-});
-
-type FormData = z.infer<typeof formSchema>;
+import React from 'react';
+import Link from 'next/link';
+import { Phone, MapPin, Clock, CheckCircle2, ArrowRight, Droplets, Sparkles, ShieldCheck, Car } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const ContactPage = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-  });
-
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log('Form submitted:', data);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    reset();
-  };
-
   return (
-    <div className="pt-24 pb-20">
+    <div className="pb-20">
       {/* Header */}
-      <section className="bg-slate-900 py-24 px-4 md:px-8 text-white relative overflow-hidden">
+      <section className="bg-slate-900 pt-32 pb-24 px-4 md:px-8 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-7xl font-bold mb-6">Contact & Quote</h1>
+          <h1 className="text-4xl md:text-7xl font-bold mb-6">Get in Touch</h1>
           <p className="text-slate-400 text-xl max-w-2xl mx-auto">
-            Ready to refresh your property? Get in touch for a free, no-obligation quote.
+            Ready to refresh your property? Give us a call for a free, no-obligation quote.
           </p>
         </div>
       </section>
 
-      <section className="py-24 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
-          {/* Contact Details */}
-          <div className="flex-1 space-y-12">
-            <div className="space-y-8">
-              <h2 className="text-3xl font-bold text-slate-900">Get in Touch</h2>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                Whether you have a question or you&apos;re ready to book, we&apos;re here to help. We aim to respond to all quote requests within 24 hours.
+      {/* Main Phone CTA */}
+      <section className="py-20 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-blue-600 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-600/30"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-32 -mb-32 blur-3xl" />
+            <div className="relative z-10">
+              <div className="bg-white/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8">
+                <Phone size={36} />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Call Us Now</h2>
+              <p className="text-blue-100 text-lg mb-10 max-w-lg mx-auto">
+                Speak directly to our team for a free quote, to book a job, or to ask any questions.
               </p>
+              <Link
+                href="tel:07570810766"
+                className="inline-flex items-center gap-3 bg-white text-blue-600 px-10 py-5 rounded-2xl text-2xl md:text-3xl font-bold hover:bg-slate-50 transition-all shadow-xl active:scale-95"
+              >
+                <Phone size={28} />
+                07570 810766
+              </Link>
+              <p className="text-blue-200 text-sm mt-6 font-medium">Available 24 hours, 7 days a week</p>
             </div>
+          </motion.div>
+        </div>
+      </section>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {[
-                { icon: Phone, title: 'Call Us', value: '07570 810766', href: 'tel:07570810766' },
-                { icon: Mail, title: 'Email Us', value: 'info@powerpulsesolutions.co.uk', href: 'mailto:info@powerpulsesolutions.co.uk' },
-                { icon: MapPin, title: 'Service Area', value: 'Sutton Coldfield & Nearby', href: '#' },
-                { icon: Clock, title: 'Hours', value: 'Open 24 Hours', href: '#' },
-              ].map((item, idx) => (
-                <div key={idx} className="flex gap-4">
-                  <div className="bg-blue-100 text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center shrink-0">
-                    <item.icon size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900">{item.title}</h4>
-                    {item.href !== '#' ? (
-                      <a href={item.href} className="text-slate-600 hover:text-blue-600 transition-colors">{item.value}</a>
-                    ) : (
-                      <span className="text-slate-600">{item.value}</span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* Contact Info Cards */}
+      <section className="pb-20 px-4 md:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center"
+            >
+              <div className="bg-blue-100 text-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                <Phone size={28} />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Phone</h3>
+              <Link href="tel:07570810766" className="text-blue-600 font-bold text-lg hover:underline">07570 810766</Link>
+            </motion.div>
 
-            {/* Map Placeholder */}
-            <div className="bg-slate-100 rounded-[2rem] p-8 aspect-video flex flex-col items-center justify-center text-center border-2 border-dashed border-slate-200">
-              <MapPin size={48} className="text-slate-300 mb-4" />
-              <h4 className="font-bold text-slate-900 mb-2">Areas Served</h4>
-              <p className="text-slate-500 text-sm">Sutton Coldfield, Little Aston, Four Oaks, Wylde Green, and surrounding areas.</p>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center"
+            >
+              <div className="bg-blue-100 text-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                <MapPin size={28} />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Service Area</h3>
+              <p className="text-slate-600">Sutton Coldfield &amp; surrounding areas within 15 miles</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center"
+            >
+              <div className="bg-blue-100 text-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                <Clock size={28} />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Hours</h3>
+              <p className="text-slate-600">Open 24 hours, 7 days a week</p>
+            </motion.div>
           </div>
+        </div>
+      </section>
 
-          {/* Quote Form */}
-          <div className="flex-1">
-            <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-slate-200 border border-slate-100 relative overflow-hidden">
-              <AnimatePresence mode="wait">
-                {!isSubmitted ? (
-                  <motion.div
-                    key="form"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <h3 className="text-2xl font-bold text-slate-900 mb-8">Request a Free Quote</h3>
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <label className="text-sm font-bold text-slate-700">Full Name</label>
-                          <input
-                            {...register('fullName')}
-                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                            placeholder="John Doe"
-                          />
-                          {errors.fullName && <p className="text-red-500 text-xs font-medium">{errors.fullName.message}</p>}
-                        </div>
-                        <div className="space-y-2">
-                          <label className="text-sm font-bold text-slate-700">Phone Number</label>
-                          <input
-                            {...register('phone')}
-                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                            placeholder="07xxx xxxxxx"
-                          />
-                          {errors.phone && <p className="text-red-500 text-xs font-medium">{errors.phone.message}</p>}
-                        </div>
-                      </div>
+      {/* Quick Pricing Overview */}
+      <section className="pb-24 px-4 md:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Quick Price Guide</h2>
+            <p className="text-slate-500 text-lg">Call for an exact quote tailored to your property</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: Droplets, title: 'Jet Washing', price: '£3.50/m\u00B2', desc: 'Driveways, patios, roofs' },
+              { icon: Sparkles, title: 'Windows', price: 'From £12', desc: '2-5 bed houses' },
+              { icon: ShieldCheck, title: 'Gutters', price: 'From £50', desc: 'All property types' },
+              { icon: Car, title: 'Car Clean', price: 'From £8', desc: 'Exterior & interior' },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
+                <div className="bg-blue-600 text-white w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <item.icon size={24} />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-1">{item.title}</h4>
+                <div className="text-blue-600 font-bold text-lg mb-1">{item.price}</div>
+                <p className="text-slate-500 text-xs">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">Email Address</label>
-                        <input
-                          {...register('email')}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                          placeholder="john@example.com"
-                        />
-                        {errors.email && <p className="text-red-500 text-xs font-medium">{errors.email.message}</p>}
-                      </div>
+      {/* Areas Served */}
+      <section className="pb-24 px-4 md:px-8">
+        <div className="max-w-5xl mx-auto text-center">
+          <h3 className="text-2xl font-bold text-slate-900 mb-8">Areas We Serve</h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['Sutton Coldfield', 'Little Aston', 'Four Oaks', 'Wylde Green', 'Walmley', 'Mere Green', 'Streetly', 'Erdington', 'Tamworth', 'Lichfield'].map((area, idx) => (
+              <span key={idx} className="bg-slate-50 border border-slate-200 px-5 py-2.5 rounded-xl text-slate-700 font-medium text-sm">
+                {area}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">Address / Area</label>
-                        <input
-                          {...register('address')}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                          placeholder="e.g. Four Oaks, Sutton Coldfield"
-                        />
-                        {errors.address && <p className="text-red-500 text-xs font-medium">{errors.address.message}</p>}
-                      </div>
+      {/* Online Quote CTA */}
+      <section className="px-4 md:px-8 pb-12">
+        <div className="max-w-4xl mx-auto bg-slate-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white">
+          <h3 className="text-2xl md:text-4xl font-bold mb-4">Prefer to get a quote online?</h3>
+          <p className="text-slate-400 text-lg mb-8">
+            Use our satellite measurement tool to measure your property and get an instant price estimate.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/quote"
+              className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all"
+            >
+              Get a Quote Online <ArrowRight size={20} />
+            </Link>
+            <Link
+              href="tel:07570810766"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition-all"
+            >
+              <Phone size={18} />
+              Call Instead
+            </Link>
+          </div>
+        </div>
+      </section>
 
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">Service Needed</label>
-                        <select
-                          {...register('service')}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none"
-                        >
-                          <option value="">Select a service...</option>
-                          <option value="driveway">Driveway Jet Washing</option>
-                          <option value="patio">Patio Jet Washing</option>
-                          <option value="roof">Roof Cleaning</option>
-                          <option value="wall">Wall / Exterior Cleaning</option>
-                          <option value="windows">Window Cleaning</option>
-                          <option value="gutters">Gutter Cleaning</option>
-                          <option value="car">Car Cleaning</option>
-                          <option value="commercial">Commercial Cleaning</option>
-                          <option value="other">Other / Multiple</option>
-                        </select>
-                        {errors.service && <p className="text-red-500 text-xs font-medium">{errors.service.message}</p>}
-                      </div>
-
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">Message / Details</label>
-                        <textarea
-                          {...register('message')}
-                          rows={4}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"
-                          placeholder="Tell us a bit about the job (e.g. size of driveway, level of dirt...)"
-                        />
-                        {errors.message && <p className="text-red-500 text-xs font-medium">{errors.message.message}</p>}
-                      </div>
-
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed shadow-xl shadow-blue-600/20"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="animate-spin" size={20} />
-                            Sending...
-                          </>
-                        ) : (
-                          <>
-                            <Send size={20} />
-                            Send Quote Request
-                          </>
-                        )}
-                      </button>
-                    </form>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
-                  >
-                    <div className="bg-green-100 text-green-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle2 size={40} />
-                    </div>
-                    <h3 className="text-3xl font-bold text-slate-900 mb-4">Request Sent!</h3>
-                    <p className="text-slate-600 mb-8">
-                      Thank you for contacting Power Pulse Solutions. We&apos;ve received your request and will get back to you with a quote within 24 hours.
-                    </p>
-                    <button
-                      onClick={() => setIsSubmitted(false)}
-                      className="text-blue-600 font-bold hover:underline"
-                    >
-                      Send another request
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+      {/* Trust Signals */}
+      <section className="px-4 md:px-8 pb-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
+            {['Fully Insured', 'Free Quotes', 'No Obligation', '2+ Years Experience', '5.0 Google Rating'].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-blue-500" />
+                <span className="font-medium">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
