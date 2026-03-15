@@ -1,0 +1,7 @@
+{
+  "name": "Power Pulse Solutions",
+  "description": "Professional jet washing and pressure washing services in Sutton Coldfield. Driveways, patios, roofs, and more. Call 07447 923336 for a free quote.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
